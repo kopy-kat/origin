@@ -1,3 +1,5 @@
+<img src="https://originsociety.xyz/assets/images/image02.jpg?v=189222cb" width="200" height="200">
+
 # Origin Society
 
 At Origin, we're founding a startup society for web3 natives who live together in a network of hacker homes.
