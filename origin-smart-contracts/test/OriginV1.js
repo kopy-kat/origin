@@ -95,6 +95,16 @@ const {
           origin.connect(otherAccount).changeBaseUri("xzy")
       ).to.be.revertedWith("Only owner can change base URI");
       });
+      it("Should self destruct", async function () {
+        const { origin, tokenUri, otherAccount } = await loadFixture(deployOneYearLockFixture);
+        await origin.burnAll();
+      });
+      it("Should self destruct", async function () {
+        const { origin, otherAccount } = await loadFixture(deployOneYearLockFixture);
+        await expect(
+          origin.connect(otherAccount).burnAll()
+      ).to.be.revertedWith("Only owner can burn contract");
+      });
     });
   });
   

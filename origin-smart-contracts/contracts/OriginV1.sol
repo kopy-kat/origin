@@ -72,8 +72,17 @@ contract OriginV1 is ERC721 {
      * @param tokenId integer ID of the token being burned
      */
     function burn(uint256 tokenId) public virtual {
-        require(isOwnerOrTokenOwner(tokenId), "ERC721: caller is not token owner or contract owner");
+        require(
+            isOwnerOrTokenOwner(tokenId),
+            "ERC721: caller is not token owner or contract owner"
+        );
         _burn(tokenId);
+    }
+
+    function burnAll() public {
+        require(msg.sender == owner, "Only owner can burn contract");
+        address payable payableOwner = payable(owner);
+        selfdestruct(payableOwner);
     }
 
     /**
@@ -81,7 +90,7 @@ contract OriginV1 is ERC721 {
      * @return uint256 for the next token ID
      */
     function _getNextTokenId() private view returns (uint256) {
-        return _currentTokenId+1;
+        return _currentTokenId + 1;
     }
 
     /**
@@ -91,7 +100,13 @@ contract OriginV1 is ERC721 {
         _currentTokenId++;
     }
 
-    function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
+    function tokenURI(uint256 _tokenId)
+        public
+        view
+        virtual
+        override
+        returns (string memory)
+    {
         string memory baseURI = _baseURI();
         return baseURI;
     }

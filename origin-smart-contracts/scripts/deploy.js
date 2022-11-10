@@ -8,9 +8,9 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const name = "Origin";
-  const symbol = "O_O";
-  const tokenUri = "ipfs://QmacHh4buJxFNKHVcsMaQYxrqkbLosDGAscXG4ffAncGeM"
+  const name = "Origin Visa";
+  const symbol = "OV";
+  const tokenUri = "ipfs://QmRNCwN3mvfP1fqN5uramxgaF9D2uqVCdPUb2QkCtHUSns"
   const ownerAddress = "0x861a811Fa3E8A7bf395e5B22002661f3d4356F0e";
 
   const OriginV1 = await hre.ethers.getContractFactory("OriginV1");
